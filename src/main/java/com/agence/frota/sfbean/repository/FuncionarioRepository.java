@@ -6,4 +6,5 @@ import com.agence.frota.domain.Funcionario;
 
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Integer> {
 
+	
 }

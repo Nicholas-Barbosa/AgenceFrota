@@ -6,6 +6,9 @@ import javax.validation.Valid;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,5 +36,16 @@ public class FuncionarioController {
 	public ResponseEntity<?> save(@RequestBody @Valid NovoFuncionarioDTO object) {
 		return ResponseEntity.ok(new GenericResponse(201, "Succesfully created",
 				Set.of(new GenericResponseAttribute("ID", service.persist(object)))));
+	}
+
+	@DeleteMapping(value = "{id}", produces = "application/json")
+	public ResponseEntity<?> deleteById(@PathVariable("id") Integer id) {
+		service.deleteById(id);
+		return ResponseEntity.noContent().build();
+	}
+
+	@GetMapping(produces = "application/json")
+	public ResponseEntity<?> findAll() {
+		return ResponseEntity.ok(service.findAll());
 	}
 }

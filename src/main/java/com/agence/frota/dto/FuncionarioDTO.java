@@ -1,23 +1,19 @@
-package com.agence.frota.domain;
+package com.agence.frota.dto;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import com.agence.frota.domain.Funcionario;
 
-@Entity
-public class Funcionario extends BaseEntity {
+public class FuncionarioDTO {
 
-	@Column(nullable = false)
 	private String nome;
-	@Column(unique = true, nullable = false)
 	private Integer matricula;
 
-	public Funcionario() {
+	public FuncionarioDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Funcionario(String nome, Integer matricula) {
+	public FuncionarioDTO(String nome, Integer matricula) {
 		super();
 		this.nome = nome;
 		this.matricula = matricula;
@@ -39,9 +35,8 @@ public class Funcionario extends BaseEntity {
 		this.matricula = matricula;
 	}
 
-	@Override
-	public String toString() {
-		return "Funcionario [nome=" + nome + ", matricula=" + matricula + "]";
+	public static FuncionarioDTO fromDomain(Funcionario domain) {
+		return new FuncionarioDTO(domain.getNome(), domain.getMatricula());
 	}
 
 	@Override
@@ -57,8 +52,13 @@ public class Funcionario extends BaseEntity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Funcionario other = (Funcionario) obj;
+		FuncionarioDTO other = (FuncionarioDTO) obj;
 		return Objects.equals(matricula, other.matricula);
+	}
+
+	@Override
+	public String toString() {
+		return "FuncionarioDTO [nome=" + nome + ", matricula=" + matricula + "]";
 	}
 
 }

@@ -12,7 +12,6 @@ public class GenericResponse {
 	private String reason;
 	private ZonedDateTime responsedAt;
 	private Set<GenericResponseAttribute> attributes;
-	private String classDescription;
 
 	public GenericResponse(int status, String reason, Set<GenericResponseAttribute> attributes) {
 		super();
@@ -20,7 +19,6 @@ public class GenericResponse {
 		this.reason = reason;
 		this.attributes = attributes;
 		this.responsedAt = ZonedDateTime.now();
-		this.classDescription = "This class is a generic class to provide json response in a convenient way.Created by Nicholas Barbosa";
 	}
 
 	public int getStatus() {
@@ -39,9 +37,6 @@ public class GenericResponse {
 		return responsedAt;
 	}
 
-	public String getClassDescription() {
-		return classDescription;
-	}
 
 	@JsonPropertyOrder({ "key", "value" })
 	public static class GenericResponseAttribute {
