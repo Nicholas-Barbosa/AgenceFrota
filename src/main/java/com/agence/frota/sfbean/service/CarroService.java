@@ -6,5 +6,5 @@ import com.agence.frota.dto.CarroDTO;
 
 public interface CarroService extends CrudService<CarroDTO, Integer, CarroDTO> {
 
-	Set<CarroDTO> retirados();
+	Set<CarroDTO> findAllEmUso();
 }

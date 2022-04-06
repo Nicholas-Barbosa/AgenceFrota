@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import com.agence.frota.domain.Carro;
 
-public class CarroDTO {
+public class CarroDTO implements Comparable<CarroDTO> {
 
 	private String modelo, marca;
 	private LocalDate fabricacao;
@@ -48,7 +48,7 @@ public class CarroDTO {
 	public static CarroDTO fromDomain(Carro carro) {
 		return new CarroDTO(carro.getModelo(), carro.getMarca(), carro.getDataFabricacao());
 	}
-	
+
 	public Carro toDomain() {
 		return new Carro(modelo, marca, fabricacao);
 	}
@@ -74,6 +74,12 @@ public class CarroDTO {
 	@Override
 	public String toString() {
 		return "NovoCarroDTO [modelo=" + modelo + ", marca=" + marca + ", fabricacao=" + fabricacao + "]";
+	}
+
+	@Override
+	public int compareTo(CarroDTO o) {
+		// TODO Auto-generated method stub
+		return o.fabricacao.compareTo(fabricacao);
 	}
 
 }

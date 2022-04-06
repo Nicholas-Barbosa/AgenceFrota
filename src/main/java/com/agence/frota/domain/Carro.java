@@ -1,10 +1,16 @@
 package com.agence.frota.domain;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Carro extends BaseEntity {
@@ -14,6 +20,8 @@ public class Carro extends BaseEntity {
 	@Column(nullable = false)
 	private String marca;
 	private LocalDate dataFabricacao;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "carro", cascade = CascadeType.REMOVE)
+	private Set<Viagem> viagens;
 
 	public Carro() {
 		// TODO Auto-generated constructor stub
@@ -26,6 +34,11 @@ public class Carro extends BaseEntity {
 		this.dataFabricacao = dataFabricacao;
 	}
 
+	public Carro(Integer id) {
+		// TODO Auto-generated constructor stub
+		super.setId(id);
+	}
+
 	public String getModelo() {
 		return modelo;
 	}
@@ -36,6 +49,14 @@ public class Carro extends BaseEntity {
 
 	public LocalDate getDataFabricacao() {
 		return dataFabricacao;
+	}
+
+	public Set<Viagem> getViagens() {
+		return Collections.unmodifiableSet(viagens);
+	}
+
+	public void setViagens(Set<Viagem> viagens) {
+		this.viagens = new HashSet<>(viagens);
 	}
 
 	@Override

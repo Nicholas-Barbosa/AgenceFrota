@@ -17,6 +17,10 @@ public class Funcionario extends BaseEntity {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Funcionario(Integer id) {
+		super.setId(id);
+	}
+
 	public Funcionario(String nome, Integer matricula) {
 		super();
 		this.nome = nome;

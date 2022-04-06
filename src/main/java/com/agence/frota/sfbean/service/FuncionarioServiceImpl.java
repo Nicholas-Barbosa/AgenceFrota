@@ -40,6 +40,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 	public void deleteById(Integer id) {
 		repository.deleteById(id);
 	}

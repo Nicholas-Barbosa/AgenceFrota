@@ -48,4 +48,9 @@ public class CarroController {
 	public ResponseEntity<?> findAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
+
+	@GetMapping(value = "/retirados", produces = "application/json")
+	public ResponseEntity<?> findAllEmUso() {
+		return ResponseEntity.ok(service.findAllEmUso());
+	}
 }

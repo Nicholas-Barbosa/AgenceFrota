@@ -12,14 +12,21 @@ public class Viagem extends BaseEntity {
 
 	@ManyToOne
 	private Carro carro;
+	@ManyToOne
+	private Funcionario funcionario;
 	@Column(nullable = false)
 	private LocalDate retirada, entrega;
 
-	public Viagem(Carro carro, LocalDate retirada, LocalDate entrega) {
+	public Viagem() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Viagem(Carro carro, LocalDate retirada, LocalDate entrega, Funcionario funcionario) {
 		super();
 		this.carro = carro;
 		this.retirada = retirada;
 		this.entrega = entrega;
+		this.funcionario = funcionario;
 	}
 
 	public Carro getCarro() {
@@ -44,6 +51,30 @@ public class Viagem extends BaseEntity {
 
 	public void setEntrega(LocalDate entrega) {
 		this.entrega = entrega;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	public String getCarroModelo() {
+		return carro.getModelo();
+	}
+
+	public String getCarroMarca() {
+		return carro.getMarca();
+	}
+
+	public String getFuncionarioNome() {
+		return funcionario.getNome();
+	}
+
+	public Integer getFuncionarioMatricula() {
+		return funcionario.getMatricula();
 	}
 
 	@Override
